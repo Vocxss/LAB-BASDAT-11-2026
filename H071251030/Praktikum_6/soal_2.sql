@@ -1,0 +1,1 @@
+select productcode, sum(quantityordered) as total_terjual, count(distinct productcode) as jumlah_pesanan from orderdetails group by productcode having sum(quantityordered) > (select avg(o.quantityordered) from orderdetails o) and count(distinct ordernumber) > 10 order by total_terjual desc
